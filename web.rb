@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'chunky_png'
-require 'fileutils'
 require 'SecureRandom'
 
 GRID = 5
@@ -9,7 +8,7 @@ ICON_SIZE = 420
 CELL_SIZE = ICON_SIZE / GRID
 
 get '/' do
-  @images = Dir.glob("#{images_dir}*.png").shuffle[0..4].map { |f| '/gen/' + File.basename(f, '.png').gsub(/_/, '/') }
+  @images = Dir.glob(File.join(images_dir, '*.png')).shuffle[0..4].map { |f| '/gen/' + File.basename(f, '.png').gsub(/_/, '/') }
   @color = SecureRandom.hex(3)
   @cells = random_cells
   erb :index
@@ -32,7 +31,7 @@ get '/gen/:fill/:color' do
 end
 
 def image_path(params)
-  "#{images_dir}#{params[:fill]}_#{params[:color]}.png"
+  File.join(images_dir, "#{params[:fill]}_#{params[:color]}.png")
 end
 
 def random_cells
@@ -71,8 +70,10 @@ def generate_image(path, cells, hex)
 end
 
 def images_dir
-  path = './tmp/images/'
-  FileUtils.mkdir_p(path)
-  path
+  tmp = './tmp'
+  images = File.join(tmp, 'images')
+  Dir.mkdir(tmp) unless Dir.exist?(tmp)
+  Dir.mkdir(images) unless Dir.exist?(images)
+  images
 end
 
