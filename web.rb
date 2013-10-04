@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'chunky_png'
-require 'FileUtils'
+require 'fileutils'
 require 'SecureRandom'
 
 GRID = 5

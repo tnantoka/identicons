@@ -7,7 +7,7 @@ require File.join(File.dirname(__FILE__), '..', 'web')
 require 'rspec'
 require 'rack/test'
 
-require 'FileUtils'
+require 'fileutils'
 
 RSpec.configure do |conf|
   conf.include Rack::Test::Methods
