@@ -1,0 +1,17 @@
+<div class="editor js_editor">
+  <div class="color js_color">
+    <% @cells.each do |i| %>
+      <a href="#" class="js_cell <%= 'is_fill' if i == 1 %>"></a>
+    <% end %>
+  </div>
+</div>
+<ul class="option">
+  <li><label><input type="checkbox" class="js_grid_check">Grid</label>
+  <li><label>#<input type="text" class="color_text js_color_text" placeholder="rrggbb" value="<%= @color %>" size="6"></label>
+  <li><a href="#" target="_blank" class="js_generate">Generate</a>
+</ul>
+<ul class="recent">
+  <% @images.each do |image| %><li><a href="<%= image %>" target="_blank"><img src="<%= image %>" alt=""></a><% end %>
+</ul>
+
+
