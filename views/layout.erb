@@ -5,19 +5,7 @@
 <meta name="viewport" content="width=600">
 <link href="/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
 
-<div class="ad">
-  <script type="text/javascript"><!--
-    google_ad_client = "ca-pub-7033544542206385";
-    /* Identicons - Home */
-    google_ad_slot = "9199563253";
-    google_ad_width = 468;
-    google_ad_height = 60;
-    //-->
-  </script>
-  <script type="text/javascript"
-    src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-  </script>
-</div>
+<%= erb :ad %>
 
 <h1><a href="/">Identicons</a></h1>
 
@@ -29,19 +17,7 @@
     <iframe src="http://ghbtns.com/github-btn.html?user=tnantoka&repo=identicons&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe>
   </p>
 
-  <div class="ad">
-    <script type="text/javascript"><!--
-      google_ad_client = "ca-pub-7033544542206385";
-      /* Identicons - Home */
-      google_ad_slot = "9199563253";
-      google_ad_width = 468;
-      google_ad_height = 60;
-      //-->
-    </script>
-    <script type="text/javascript"
-      src="//pagead2.googlesyndication.com/pagead/show_ads.js">
-    </script>
-  </div>
+  <%= erb :ad %>
 
   <p class="copyright">
     &copy; 2013 <a href="https://twitter.com/tnantoka">tnantoka</a>
@@ -61,4 +37,17 @@
 <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/script.js"></script>
 
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<% if Sinatra::Application.production? %>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44606693-1', 'identicons.herokuapp.com');
+    ga('send', 'pageview');
+
+  </script>
+<% end %>
