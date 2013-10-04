@@ -7,8 +7,9 @@ unless production?
 end
 
 GRID = 5
+PADDING = 35
 ICON_SIZE = 420
-CELL_SIZE = ICON_SIZE / GRID
+CELL_SIZE = (ICON_SIZE - PADDING * 2) / GRID
 
 get '/' do
   @images = Dir.glob(File.join(images_dir, '*.png')).shuffle[0..4].map { |f| '/gen/' + File.basename(f, '.png').gsub(/_/, '/') }
@@ -60,8 +61,8 @@ def generate_image(path, cells, hex)
     GRID.times do |x|
       i = (GRID * y + x).to_i
       if cells[i]
-        x0 = x * CELL_SIZE
-        y0 = y * CELL_SIZE
+        x0 = x * CELL_SIZE + PADDING
+        y0 = y * CELL_SIZE + PADDING
         x1 = x0 + CELL_SIZE
         y1 = y0 + CELL_SIZE
         image.rect(x0, y0, x1, y1, color, color)

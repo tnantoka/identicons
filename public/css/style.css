@@ -27,20 +27,21 @@ label {
 }
 
 .editor {
-  width: 420px;
-  height: 420px;
+  width: 350px;
+  height: 350px;
   margin: 0 auto;
-  border: 1px solid #fff;
+  padding: 35px;
+  background: #f0f0f0;
 }
 .editor .color {
-  width: 100%;
-  height: 100%;
-  background: #f2f2f2;
+  width: 350px;
+  height: 350px;
+  background: inherit;
 }
 .editor a { 
   display: block;
-  width: 84px;
-  height: 84px;
+  width: 70px;
+  height: 70px;
   float: left;
   background: #f0f0f0;
 }
@@ -54,13 +55,13 @@ label {
   background: #f0f0f0;
   opacity: 0.2;
 }
-.editor.grid {
-  border: 1px dotted #777;
+.editor.grid .color {
+  border: 1px solid #777;
 }
 .editor.grid a {
-  width: 82px;
-  height: 82px;
-  border: 1px dotted #777;
+  width: 68px;
+  height: 68px;
+  border: 1px solid #777;
 }
 
 .option {
