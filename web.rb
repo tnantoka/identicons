@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'chunky_png'
-require 'SecureRandom'
+#require 'SecureRandom' if development?
 
 GRID = 5
 ICON_SIZE = 420
