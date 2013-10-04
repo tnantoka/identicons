@@ -1,7 +1,10 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'chunky_png'
-#require 'SecureRandom' if development?
+unless production?
+  require 'FileUtils'
+  require 'SecureRandom'
+end
 
 GRID = 5
 ICON_SIZE = 420
@@ -70,10 +73,8 @@ def generate_image(path, cells, hex)
 end
 
 def images_dir
-  tmp = './tmp'
-  images = File.join(tmp, 'images')
-  Dir.mkdir(tmp) unless Dir.exist?(tmp)
-  Dir.mkdir(images) unless Dir.exist?(images)
-  images
+  path = './tmp/images'
+  FileUtils.mkdir_p(path)
+  path
 end
 

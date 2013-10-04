@@ -14,9 +14,6 @@ describe 'Web' do
   end
 
   describe 'gen' do
-    before(:each) do
-      File.unlink('./tmp/images/0000000000001000010000000_69cdbc.png')
-    end
     it 'returns http success' do
       get '/gen/0000000000001000010000000/69cdbc'
       expect(last_response).to be_ok
